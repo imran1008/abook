@@ -251,7 +251,7 @@ import_database()
 	}
 
 	if(i_read_file(filename, i_filters[filter].func ))
-		statusline_msg(_("Error occured while opening the file"));
+		statusline_msg(_("Error occurred while opening the file"));
 	else if(tmp == db_n_items())
 		statusline_msg(_("File does not seem to be a valid addressbook"));
 
@@ -397,7 +397,7 @@ export_database()
 	}
 
 	if( e_write_file(filename, e_filters[filter].func, enum_mode))
-		statusline_msg(_("Error occured while exporting"));
+		statusline_msg(_("Error occurred while exporting"));
 
 	refresh_screen();
 	free(filename);

@@ -530,7 +530,8 @@ msgid "Filename: "
 msgstr "ファイル名: "
 
 #: filter.c:252
-msgid "Error occured while opening the file"
+#, fuzzy
+msgid "Error occurred while opening the file"
 msgstr "ファイルを開く際にエラーが発生しました"
 
 #: filter.c:254
@@ -550,7 +551,8 @@ msgid "keybindings:all/selected/cancel|asc"
 msgstr "asc"
 
 #: filter.c:398
-msgid "Error occured while exporting"
+#, fuzzy
+msgid "Error occurred while exporting"
 msgstr "出力中にエラーが発生しました"
 
 #: filter.c:2469

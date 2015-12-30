@@ -528,7 +528,8 @@ msgid "Filename: "
 msgstr "Nome del file:"
 
 #: filter.c:252
-msgid "Error occured while opening the file"
+#, fuzzy
+msgid "Error occurred while opening the file"
 msgstr "Errore nell'apertura del file"
 
 #: filter.c:254
@@ -548,7 +549,8 @@ msgid "keybindings:all/selected/cancel|asc"
 msgstr "tsc"
 
 #: filter.c:398
-msgid "Error occured while exporting"
+#, fuzzy
+msgid "Error occurred while exporting"
 msgstr "Errore nell'esportazione"
 
 #: filter.c:2469
