@@ -186,6 +186,11 @@ get_real_name()
 	int rtn;
 	char *tmp;
 
+	//if USER env variable isn't defined, use nobody account to avoid SIGSEGV with getpwnam
+	if (!username) {
+          username = "nobody";
+       }
+
 	pwent = getpwnam(username);
 
 	if((tmp = xstrdup(pwent->pw_gecos)) == NULL)
