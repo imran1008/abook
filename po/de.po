@@ -68,7 +68,7 @@ msgid ""
 "quiet\n"
 msgstr ""
 "Die Optionen --mutt-query, --convert, --add-email und --add-email-"
-"quietkönnen nicht kombiniert werden\n"
+"quiet können nicht kombiniert werden\n"
 
 #: abook.c:295
 #, c-format
@@ -76,14 +76,14 @@ msgid "please use option --%s after --convert option\n"
 msgstr "Bitte die Option --%s nach der Option --convert angeben\n"
 
 #: abook.c:382
-#, fuzzy, c-format
+#, c-format
 msgid "please use option --outformat after --convert or --mutt-query option\n"
-msgstr "Bitte die Option --%s nach der Option --convert angeben\n"
+msgstr "Bitte die Option --outformat nach der Option --convert oder --mutt-query angeben\n"
 
 #: abook.c:420
-#, fuzzy, c-format
+#, c-format
 msgid "Invalid custom format string\n"
-msgstr "Ungültiger Feld-Wert für die Sortierung"
+msgstr "Ungültiger custom-format String\n"
 
 #: abook.c:428
 #, c-format
@@ -96,7 +96,7 @@ msgstr "     -h\t--help\t\t\t\tHilfe anzeigen"
 
 #: abook.c:451
 msgid "     -C\t--config\t<file>\t\tuse an alternative configuration file"
-msgstr "     -C\t--config\t<datei>\t\tAlternative Config-Datei verwenden"
+msgstr "     -C\t--config\t<datei>\t\tAlternative Konfigurationsdatei verwenden"
 
 #: abook.c:452
 msgid "\t--datafile\t<file>\t\tuse an alternative addressbook file"
@@ -111,7 +111,7 @@ msgid ""
 "\t--add-email\t\t\tread an e-mail message from stdin and\n"
 "\t\t\t\t\tadd the sender to the addressbook"
 msgstr ""
-"\t--add-email\t\t\tE-Mail-Adresse von stdin lesen und\n"
+"\t--add-email\t\t\tE-Mail-Adresse von der Standardeingabe lesen und\n"
 "\t\t\t\t\tAbsender zum Adressbuch hinzufügen"
 
 #: abook.c:458
@@ -163,13 +163,12 @@ msgid "\t\t\t\t\t(default: stdout)"
 msgstr "\t\t\t\t\t(Standard: stdout)"
 
 #: abook.c:472
-#, fuzzy
 msgid "\t--outformatstr\t<str>   \tformat to use for \"custom\" --outformat"
-msgstr "\t--outformat\t<format>\tFormat für Ausgabedatei"
+msgstr "\t--outformatstr\t<str>   \tFormat zur Verwendung von „custom“ --outformat"
 
 #: abook.c:473
 msgid "\t\t\t\t\t(default: \"{nick} ({name}): {mobile}\")"
-msgstr ""
+msgstr "\t\t\t\t\t(Standard: \"{nick} ({name}): {mobile}\")"
 
 #: abook.c:474
 msgid "\t--formats\t\t\tlist available formats"
@@ -232,7 +231,7 @@ msgstr "%d Element(e) zu %s hinzugefügt\n"
 
 #: abook.c:719
 msgid "Valid sender address not found"
-msgstr "Keine gültige Absender-Adresse gefunden"
+msgstr "Keine gültige Absenderadresse gefunden"
 
 #: abook.c:760
 #, c-format
@@ -266,7 +265,7 @@ msgstr "n"
 #, c-format
 msgid "stdin is a directory or cannot stat stdin\n"
 msgstr ""
-"Entweder ist stdin ein Verzeichnis, oder der Zustand vonstdin kann nicht "
+"Entweder ist stdin ein Verzeichnis oder der Zustand von stdin kann nicht "
 "ermittelt werden\n"
 
 #: abook.h:16
@@ -293,10 +292,9 @@ msgstr "Adresse2"
 msgid "City"
 msgstr "Ort"
 
-# better translation?
 #: database.c:50
 msgid "State/Province"
-msgstr "Bundesland"
+msgstr "Region"
 
 #: database.c:51
 msgid "ZIP/Postal Code"
@@ -343,7 +341,7 @@ msgstr "Jahrestag"
 
 #: database.c:61
 msgid "Groups"
-msgstr ""
+msgstr "Gruppen"
 
 #: database.c:167
 msgid "field already defined"
@@ -367,7 +365,7 @@ msgstr "Ungültiger Feld-Wert für die Sortierung"
 
 #: edit.c:59
 msgid "Tab name too wide for screen"
-msgstr "Kartei-Name zu breit für den Bildschirm"
+msgstr "Reiterbezeichnung zu breit für den Bildschirm"
 
 #: edit.c:360
 msgid "keybindings_new_123456789|n123456789"
@@ -398,13 +396,14 @@ msgstr "E-Mails: "
 msgid "Item: "
 msgstr "Element: "
 
+# Y-M-D is international, but D-M-Y is more common in Germany
 #: edit.c:460
 msgid "%Y-%M-%D"
-msgstr "%Y-%M-%D"
+msgstr "%D-%M-%Y"
 
 #: edit.c:461
 msgid "--%M-%D"
-msgstr "--%M-%D"
+msgstr "--%D-%M"
 
 #: edit.c:539
 msgid "Day: "
@@ -446,21 +445,24 @@ msgstr "mutt-Alias"
 msgid "pine addressbook"
 msgstr "pine-Adressbuch"
 
+# getrennt is more used than separiert
 #: filter.c:92 filter.c:107
 msgid "comma separated values"
-msgstr "komma-separierte Werte"
+msgstr "kommagetrennte Werte"
 
+# getrennt is more used than separiert
 #: filter.c:93 filter.c:108
 msgid "comma separated values (all fields)"
-msgstr "komma-separierte Werte (alle Felder)"
+msgstr "kommagetrennte Werte (alle Felder)"
 
+# getrennt is more used than separiert
 #: filter.c:94 filter.c:109
 msgid "Palm comma separated values"
-msgstr "Palm komma-separierte Werte"
+msgstr "Palm kommagetrennte Werte"
 
 #: filter.c:95
 msgid "vCard file"
-msgstr ""
+msgstr "vCard Datei"
 
 #: filter.c:101
 msgid "ldif / Netscape addressbook (.4ld)"
@@ -468,11 +470,11 @@ msgstr "ldif / Netscape Adressbuch (.4ld)"
 
 #: filter.c:102 filter.c:120
 msgid "vCard 2 file"
-msgstr ""
+msgstr "vCard 2 Datei"
 
 #: filter.c:104
 msgid "mutt query format (internal use)"
-msgstr ""
+msgstr "mutt query format (interne Verwendung)"
 
 #: filter.c:105
 msgid "html document"
@@ -499,23 +501,21 @@ msgid "BSD calendar"
 msgstr "BSD-Kalender"
 
 #: filter.c:115 filter.c:122
-#, fuzzy
 msgid "Custom format"
-msgstr "Benutzer1"
+msgstr "Benutzerdefiniertes Format"
 
 #: filter.c:135
-#, fuzzy
 msgid "input formats:"
-msgstr "Eingabe:"
+msgstr "Eingabeformate:"
 
 #: filter.c:142
-#, fuzzy
 msgid "output formats:"
-msgstr "Ausgabe:"
+msgstr "Ausgabeformate:"
 
+# not sure if it's useful to translate query-compatible here
 #: filter.c:149
 msgid "query-compatible output formats:"
-msgstr ""
+msgstr "Abfrage kompatible Ausgabeformate"
 
 #: filter.c:214
 msgid "import database"
@@ -523,7 +523,7 @@ msgstr "importiere Datenbank"
 
 #: filter.c:216 filter.c:345
 msgid "please select a filter"
-msgstr "Bitte Filter auswählen"
+msgstr "Bitte einen Filter auswählen"
 
 #: filter.c:224 filter.c:353
 msgid "x -\tcancel"
@@ -566,17 +566,17 @@ msgstr "%02d/%02d\tJahrestag von %s\n"
 #: filter.c:2498
 #, c-format
 msgid "parse_custom_format: fmt_string or ft not allocated\n"
-msgstr ""
+msgstr "parse_custom_format: fmt_string oder ft nicht alloziert\n"
 
 #: filter.c:2517
 #, c-format
 msgid "parse_custom_format: invalid placeholder: {%s}\n"
-msgstr ""
+msgstr "parse_custom_format: ungültiger Platzhalter: {%s}\n"
 
 #: filter.c:2565
 #, c-format
 msgid "%s: invalid format, index %ld\n"
-msgstr ""
+msgstr "%s: ungültiges Format, Index %ld\n"
 
 #: help.h:11
 msgid "\t?\t\thelp\n"
@@ -594,7 +594,7 @@ msgstr "\tQ\t\tBeenden ohne zu speichern\n"
 msgid "\tP\t\tquit and output selected item(s) to stderr\n"
 msgstr ""
 "\tP\t\tBeenden und ausgewählte Elemente\n"
-"\t\t\tnach stderr ausgeben\n"
+"\t\t\tauf die Standardfehlerausgabe ausgeben\n"
 
 #: help.h:15
 msgid "\t^L\t\trefresh screen\n"
@@ -619,16 +619,15 @@ msgstr "\tr / Entf.\tAusgewählte Elemente entfernen\n"
 
 #: help.h:21
 msgid "\tM\t\tmerge selected items (into top one)\n"
-msgstr ""
+msgstr "\tM\t\tAusgewählte Elemente vereinen (in das Oberste)\n"
 
 #: help.h:22
 msgid "\tD\t\tduplicate item\n"
 msgstr "\tD\t\tElement verdoppeln\n"
 
 #: help.h:23
-#, fuzzy
 msgid "\tU\t\tremove duplicates\n"
-msgstr "\tD\t\tElement verdoppeln\n"
+msgstr "\tU\t\tDuplikate entfernen\n"
 
 #: help.h:25
 msgid "\tspace\t\tselect item\n"
@@ -680,7 +679,7 @@ msgstr "\ts\t\tDatenbank sortieren\n"
 
 #: help.h:39
 msgid "\tS\t\t\"surname sort\"\n"
-msgstr "\tS\t\t\"Nachnamen-Sortierung\"\n"
+msgstr "\tS\t\t„Nachnamen-Sortierung“\n"
 
 #: help.h:40
 msgid "\tF\t\tsort by field (defined in configuration file)\n"
@@ -708,17 +707,19 @@ msgstr "\tZ\t\tAktuelles Element nach unten verschieben\n"
 msgid "\tm\t\tsend mail with mutt\n"
 msgstr "\tm\t\tE-Mail mit Mutt senden\n"
 
+# it's more natural in German to say to view it *in* not *with*
 #: help.h:49
 msgid "\tv\t\tview URL with web browser\n"
-msgstr "\tv\t\tURL mit Web-Browser anzeigen\n"
+msgstr "\tv\t\tURL im Web-Browser anzeigen\n"
 
+# Registerkarte is the correct term, but Tab is more common to say
 #: help.h:57
 msgid "\tarrows/h,l\t\tchange tab\n"
 msgstr "\tPfeilt./h,l\t\tTab wechseln\n"
 
 #: help.h:59
 msgid "\tq\t\t\tquit to main screen\n"
-msgstr "\tq\t\t\tZum Hauptschirm zurück kehren\n"
+msgstr "\tq\t\t\tZum Hauptfenster zurückkehren\n"
 
 #: help.h:61
 msgid "\t1 - 5 A - Z\t\tedit fields\n"
@@ -726,7 +727,7 @@ msgstr "\t1 - 5 A - Z\t\tFelder bearbeiten\n"
 
 #: help.h:63
 msgid "\tk or <\t\t\tprevious item\n"
-msgstr "\tk or <\t\t\tVorheriges Element\n"
+msgstr "\tk or <\t\t\tprevious Element\n"
 
 #: help.h:64
 msgid "\tj or >\t\t\tnext item\n"
@@ -748,9 +749,10 @@ msgstr "\tu\t\t\tRückgängig\n"
 msgid "\tm\t\t\tsend mail with mutt\n"
 msgstr "\tm\t\t\tE-Mail mit Mutt senden\n"
 
+# it's more natural in German to say to view it *in* not *with*
 #: help.h:72
 msgid "\tv\t\t\tview url with web browser\n"
-msgstr "\tv\t\t\tURL mit Web-Browser anzeigen\n"
+msgstr "\tv\t\t\tURL im Web-Browser anzeigen\n"
 
 #: options.c:272
 msgid "quote mismatch"
@@ -762,7 +764,7 @@ msgstr "kein Zuweisungszeichen gefunden"
 
 #: options.c:281
 msgid "error in comma separated list"
-msgstr "Fehler in komma-separierter Liste"
+msgstr "Fehler in kommagetrennter Liste"
 
 #: options.c:311 options.c:330
 msgid "invalid value"
@@ -778,8 +780,8 @@ msgid ""
 "valid values for the 'preserve_fields' option are 'all', "
 "'standard' (default), and 'none'\n"
 msgstr ""
-"gültige Werte für die Option »preserve_fields« sind »all«, "
-"»standard« (Voreinstellung) und »none«\n"
+"gültige Werte für die Option „preserve_fields“ sind „all“, "
+"„standard“ (Voreinstellung) und „none“\n"
 
 #: options.c:372
 #, c-format
@@ -787,8 +789,8 @@ msgid ""
 "valid values for the 'address_style' option are 'eu' (default), 'uk', and "
 "'us'\n"
 msgstr ""
-"gültige Werte für die Option »address_style« sind »eu« (Voreinstellung), "
-"»uk« und »us«\n"
+"gültige Werte für die Option „address_style“ sind „eu“ (Voreinstellung), "
+"„uk“ und „us“\n"
 
 #: options.c:394
 msgid "invalid value assignment"
@@ -799,8 +801,8 @@ msgid ""
 "customfield: obsolete command - please use the 'field' and 'view' commands "
 "instead"
 msgstr ""
-"customfield: veralteter Befehl - verwenden Sie bitte die Befehle »field« und "
-"»view«"
+"customfield: veralteter Befehl - verwenden Sie bitte die Befehle „field“ und "
+"„view“"
 
 #: options.c:420
 msgid "no view name provided"
@@ -827,12 +829,12 @@ msgstr "unbekanntes Symbol %s\n"
 #: ui.c:234
 #, c-format
 msgid "Your terminal size is %dx%d\n"
-msgstr "Die Größe des Terminals ist %dx%d.\n"
+msgstr "Die Größe des Terminals ist %dx%d\n"
 
 #: ui.c:235
 #, c-format
 msgid "Terminal is too small. Minimum terminal size for abook is %dx%d\n"
-msgstr "Das Terminal ist zu klein. Die minimale Größe für abook ist %dx%d.\n"
+msgstr "Das Terminal ist zu klein. Die minimale Größe für abook ist %dx%d\n"
 
 #: ui.c:423
 msgid " (Y/n)?"
@@ -856,15 +858,13 @@ msgid "Remove selected item(s)"
 msgstr "Lösche ausgewählte Elemente"
 
 #: ui.c:666
-#, fuzzy
 msgid "Merge selected items"
-msgstr "Keine Elemente ausgewählt"
+msgstr "Ausgewählte Elemente vereinen"
 
 # "Lösche ausgewählte(s) Element(e)" sounds silly ... plural form is ok.
 #: ui.c:675
-#, fuzzy
 msgid "Remove duplicates"
-msgstr "Lösche ausgewählte Elemente"
+msgstr "Duplikate entfernen"
 
 #: ui.c:685
 msgid "Clear WHOLE database"
@@ -879,7 +879,7 @@ msgstr "Suche hat das Ende erreicht, weiter am Anfang"
 #: ui.c:744
 #, c-format
 msgid "Your current data will be lost - Press '%c' to continue"
-msgstr "Die aktuellen Daten sind verloren - Drücke '%c' um fortzufahren"
+msgstr "Die aktuellen Daten gehen verloren - Drücke '%c' um fortzufahren"
 
 # instead: Drucke alle (a), drucke ausgewählte (s), oder abbrechen (c)?
 #: ui.c:769
@@ -909,7 +909,7 @@ msgstr "undefiniertes Feld"
 
 #: views.c:92
 msgid "maximal number of fields per view reached"
-msgstr "maximale Anzahl von Feldern für Ansicht erreicht"
+msgstr "maximale Anzahl von Feldern pro Ansicht erreicht"
 
 #: views.c:95
 msgid "field already in this view"
@@ -933,27 +933,27 @@ msgstr "ANDERE"
 
 #: views.c:165 views.c:166 views.c:167 views.c:168 views.c:169
 msgid "CUSTOM"
-msgstr "BENUTZER"
+msgstr "BENUTZERDEFINIERT"
 
 #: views.c:165
 msgid "Custom1"
-msgstr "Benutzer1"
+msgstr "Benutzerdefiniert1"
 
 #: views.c:166
 msgid "Custom2"
-msgstr "Benutzer2"
+msgstr "Benutzerdefiniert2"
 
 #: views.c:167
 msgid "Custom3"
-msgstr "Benutzer3"
+msgstr "Benutzerdefiniert3"
 
 #: views.c:168
 msgid "Custom4"
-msgstr "Benutzer4"
+msgstr "Benutzerdefiniert4"
 
 #: views.c:169
 msgid "Custom5"
-msgstr "Benutzer5"
+msgstr "Benutzerdefiniert5"
 
 #~ msgid "GnomeCard (VCard) addressbook"
 #~ msgstr "GnomeCard (VCard) Adressbuch"
