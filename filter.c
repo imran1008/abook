@@ -2580,15 +2580,17 @@ find_field_enum(char *s) {
    a *printf() compatible string.
    Stores the abook field values into ft. */
 void
-parse_custom_format(char *s, char *fmt_string, enum field_types *ft)
+parse_custom_format(char *s, char *fmt_string, int *ft)
 {
 	if(! fmt_string || ! ft) {
-	  fprintf(stderr, _("parse_custom_format: fmt_string or ft not allocated\n"));
-	  exit(EXIT_FAILURE);
+		fprintf(stderr, _("parse_custom_format: fmt_string or ft not allocated\n"));
+		exit(EXIT_FAILURE);
 	}
 
 	char tmp[1] = { 0 };
 	char *p, *start, *field_name = NULL;
+	abook_field *custom_field = NULL;
+	int field_num;
 	p = start = s;
 
 	while(*p) {
@@ -2602,8 +2604,15 @@ parse_custom_format(char *s, char *fmt_string, enum field_types *ft)
 		  field_name = strndup(start, (size_t)(p-start));
 		  *ft = find_field_enum(field_name);
 		  if(*ft == -1) {
-		    fprintf(stderr, _("parse_custom_format: invalid placeholder: {%s}\n"), field_name);
-		    exit(EXIT_FAILURE);
+			  // It's either invalid, either a custom field
+			  custom_field = find_declared_field(field_name);
+			  if (! custom_field) {
+				  fprintf(stderr, _("parse_custom_format: invalid placeholder: {%s}\n"), field_name);
+				  exit(EXIT_FAILURE);
+			  } else {
+				  find_field_number(field_name, &field_num);
+				  *ft = CUSTOM_FIELD_START_INDEX + field_num;
+			  }
 		  }
 
 		  ft++;
@@ -2656,7 +2665,7 @@ parse_custom_format(char *s, char *fmt_string, enum field_types *ft)
 }
 
 static int
-custom_export_item(FILE *out, int item, char *s, enum field_types *ft);
+custom_export_item(FILE *out, int item, char *s, int *ft);
 
 
 // stores the format string generated from --outformatstr {custom_format}
@@ -2664,7 +2673,7 @@ custom_export_item(FILE *out, int item, char *s, enum field_types *ft);
 // overrides default value of custom_format set by from abook.c
 extern char custom_format[FORMAT_STRING_LEN];
 char parsed_custom_format[FORMAT_STRING_LEN];
-enum field_types *custom_format_fields = 0;
+int custom_format_fields[FORMAT_STRING_MAX_FIELDS + 1] = {0};
 
 /* wrapper for custom_export_item:
    1) avoid messing with extern pointer
@@ -2679,14 +2688,14 @@ custom_print_item(FILE *out, int item)
 }
 
 static int
-custom_export_item(FILE *out, int item, char *fmt, enum field_types *ft)
+custom_export_item(FILE *out, int item, char *fmt, int *ft)
 {
   char *p, *q = 0;
 
   // if the first character is '!':
   // we first check that all fields exist before continuing
   if(*fmt == '!') {
-    enum field_types *ftp = ft;
+    int *ftp = ft;
     while(*ft != ITEM_FIELDS) {
       if(! db_fget(item, *ft) )
 	return 1;
@@ -2698,7 +2707,12 @@ custom_export_item(FILE *out, int item, char *fmt, enum field_types *ft)
 
   while (*fmt) {
     if(!strncmp(fmt, "%s", 2)) {
-      fprintf(out, "%s", safe_str(db_fget(item, *ft)));
+       if(*ft >= CUSTOM_FIELD_START_INDEX) {
+	       fprintf(out, "%s", safe_str(db_fget_byid(item, *ft - CUSTOM_FIELD_START_INDEX)));
+       } else {
+	       fprintf(out, "%s", safe_str(db_fget(item, *ft)));
+       }
+
       ft++;
       fmt+=2;
     } else if (*ft == ITEM_FIELDS) {
@@ -2725,8 +2739,7 @@ custom_export_item(FILE *out, int item, char *fmt, enum field_types *ft)
 static int
 custom_export_database(FILE *out, struct db_enumerator e)
 {
-	enum field_types *ft =
-	  (enum field_types *)malloc(FORMAT_STRING_MAX_FIELDS * sizeof(enum field_types));
+	int ft[FORMAT_STRING_MAX_FIELDS + 1];
 
 	parse_custom_format(custom_format, (char*)&parsed_custom_format, ft);
 	db_enumerate_items(e) {
