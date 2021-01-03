@@ -1,5 +1,9 @@
 git
- -
+ - added --email-fields to collect email addresses from cc,bcc,... email message fields [Corey Minyard]
+ - don't leak data file's handle #6 [dcb]
+ - don't rewrite database when quitting after no change [Raphaël Droz]
+ - custom output filter fixes
+ - Aliaseed --datafile to -f [Gerfried Fuchs]
 
 0.6.1
  - custom output format (Raphaël Droz)

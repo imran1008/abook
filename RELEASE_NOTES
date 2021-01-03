@@ -4,6 +4,14 @@ A more comprehensive list of changes can be found in the ChangeLog file.
 
 --
 Git:
+ * New short-option alias: -f is bound to --datafile
+ * New options: --email-fields:
+   Allows --add-email to collect email addresses from other fields than From (eg: cc, bcc, or any other).
+ * Don't leak data file's handle. Fixes #6
+ * When closing abook and not change happened, the database file is not rewritten.
+   --add-email no works while another interactive abook instance is open as long as the later does not modify the DB.
+ * Fixes custom output filter fixes
+
 
 0.6.1 (2015-08-11):
   * support for mouse
