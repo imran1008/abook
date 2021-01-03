@@ -1951,19 +1951,15 @@ allcsv_export_database(FILE *out, struct db_enumerator e)
 
 	// pointer to the end of the field list
 	int append_field = ITEM_FIELDS;
-	// custom field's trailing number (between 1 and 5)
-	int j;
-	// full custom field name, eg "custom4"
-	char custom_field_key[8];
 	// index used by custom_field_key
 	int field_no;
 	// name of the defined field <field_no> as chosen by the user
-	char *custom_field_name;
+	char *custom_field_name = NULL;
 
-	for (j = 1; j <= 5; j++) {
-		snprintf(custom_field_key, 8, "custom%d", j);
-		if(find_declared_field(custom_field_key)) {
-			find_field_number(custom_field_key, &field_no);
+	abook_field_list *cur, *custom_fieldsl;
+	for(cur = list_custom_fields(); cur; cur = cur->next) {
+		if(find_declared_field(cur->field->key)) {
+			find_field_number(cur->field->key, &field_no);
 			get_field_info(field_no, NULL, &custom_field_name, NULL);
 			// append the field to the list
 			allcsv_export_fields[append_field] = field_no + CUSTOM_FIELD_START_INDEX;
@@ -1972,7 +1968,8 @@ allcsv_export_database(FILE *out, struct db_enumerator e)
 			fprintf(out, ",\"%s\"", custom_field_name);
 		}
 	}
-	free(custom_field_name);
+	if (custom_field_name) free(custom_field_name);
+
 	fprintf(out, "\n");
 
 	csv_export_common(out, e, allcsv_export_fields, NULL);

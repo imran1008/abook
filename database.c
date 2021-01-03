@@ -193,6 +193,42 @@ declare_new_field(char *key, char *name, char *type, int accept_standard)
 }
 
 /*
+ * Provide a list of custom fields. Handy for exporters.
+ */
+abook_field_list *
+list_custom_fields()
+{
+	abook_field_list
+		*cur = fields_list,
+		*pos = NULL,
+		*tmp = NULL;
+	int is_standard, i;
+	for(; cur; cur = cur->next) {
+		is_standard = 0;
+		for(i = 0; standard_fields[i].key; i++) {
+			if(0 == strcmp(standard_fields[i].key, cur->field->key)) {
+				is_standard = 1;
+				break;
+			}
+		}
+
+		if (is_standard) continue;
+
+		if(tmp) {
+			tmp->next = xmalloc(sizeof(abook_field_list));
+			tmp = tmp->next;
+		} else {
+			pos = tmp = xmalloc(sizeof(abook_field_list));
+		}
+
+		tmp->field = cur->field;
+		tmp->next = NULL;
+	}
+
+	return pos;
+}
+
+/*
  * Declare a new field while database is already loaded
  * making it grow accordingly
  */
