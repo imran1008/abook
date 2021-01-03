@@ -4,14 +4,15 @@ A more comprehensive list of changes can be found in the ChangeLog file.
 
 --
 Git:
+ * New options: --email-fields. Allows --add-email to collect email
+   addresses from other fields than From (eg: cc, bcc, or any other).
+ * Improvement: custom fields export now fully supported by the "allcsv"
+   and "custom" filters. It was previsouly unsupportted by "custom"
+   and buggy for "allcsv" (restricted to fields named "custom[135]")
  * New short-option alias: -f is bound to --datafile
- * New options: --email-fields:
-   Allows --add-email to collect email addresses from other fields than From (eg: cc, bcc, or any other).
- * Don't leak data file's handle. Fixes #6
- * When closing abook and not change happened, the database file is not rewritten.
-   --add-email no works while another interactive abook instance is open as long as the later does not modify the DB.
- * Fixes custom output filter fixes
-
+ * When closing abook and no change happened, the database file is not rewritten anymore.
+   --add-email now works as expected even if another interactive abook instance is running
+   (as long as the later does not modify the database)
 
 0.6.1 (2015-08-11):
   * support for mouse

@@ -1,9 +1,15 @@
 git
- - added --email-fields to collect email addresses from cc,bcc,... email message fields [Corey Minyard]
- - don't leak data file's handle #6 [dcb]
- - don't rewrite database when quitting after no change [Raphaël Droz]
+ - custom fields' can be used in placeholder in the "custom" output export (Raphaël Droz)
+ - allcsv export format can now export any custom fields (of any name) (Raphaël Droz)
+ - German translation update (Rieger Anton)
+ - Avoid SIGSEV if USER is not defined (Denis Briand)
+ - Spelling (Denis Briand)
+ - added --email-fields to collect email addresses from cc,bcc,... email message fields (Corey Minyard)
+ - don't leak data file's handle #6 (dcb)
+ - don't rewrite database when quitting after no change (Raphaël Droz)
  - custom output filter fixes
- - Aliaseed --datafile to -f [Gerfried Fuchs]
+ - Aliased --datafile to -f (Gerfried Fuchs)
+ - autotools update (Raphaël Droz)
 
 0.6.1
  - custom output format (Raphaël Droz)
