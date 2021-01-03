@@ -329,7 +329,7 @@ parse_command_line(int argc, char **argv)
 			{ "help", 0, 0, 'h' },
 			{ "add-email", 0, 0, OPT_ADD_EMAIL },
 			{ "add-email-quiet", 0, 0, OPT_ADD_EMAIL_QUIET },
-			{ "fields", 1, 0, OPT_EMAIL_FIELDS },
+			{ "email-fields", 1, 0, OPT_EMAIL_FIELDS },
 			{ "datafile", 1, 0, 'f' },
 			{ "mutt-query", 1, 0, OPT_MUTT_QUERY },
 			{ "config", 1, 0, 'C' },
@@ -459,6 +459,10 @@ show_usage()
 	puts	(_("	--add-email-quiet		"
 		"same as --add-email but doesn't\n"
 		"					require to confirm adding"));
+	puts	(_("	--email-fields	<string>	which fields from the email message\n"
+		"					"
+		"are used to collect addresses from"));
+
 	putchar('\n');
 	puts	(_("	--convert			convert address book files"));
 	puts	(_("	options to use with --convert:"));
@@ -820,7 +824,7 @@ set_email_fields(char *fl)
 			fieldcount++;
 	}
 	if(i == 0) {
-		fprintf(stderr, "No fields given\n");
+		fprintf(stderr, "No email field given\n");
 		exit(EXIT_FAILURE);
 	}
 	f = xmalloc(sizeof(char *) * (fieldcount + 1));
@@ -830,14 +834,14 @@ set_email_fields(char *fl)
 		if(fl[i] == ',') {
 			fl[i] = '\0';
 			if(strlen(f[j-1]) == 0) {
-			    fprintf(stderr, "Empty field given\n");
+			    fprintf(stderr, "Empty email field given\n");
 			    exit(EXIT_FAILURE);
 			}
 			f[j++] = fl + i + 1;
 		}
 	}
 	if(strlen(f[j-1]) == 0) {
-	    fprintf(stderr, "Empty field given\n");
+	    fprintf(stderr, "Empty email field given\n");
 	    exit(EXIT_FAILURE);
 	}
 	f[j] = NULL;
