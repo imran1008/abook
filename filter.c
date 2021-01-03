@@ -1961,7 +1961,7 @@ allcsv_export_database(FILE *out, struct db_enumerator e)
 	char *custom_field_name;
 
 	for (j = 1; j <= 5; j++) {
-		snprintf(custom_field_key, 8, "custom%d", j++);
+		snprintf(custom_field_key, 8, "custom%d", j);
 		if(find_declared_field(custom_field_key)) {
 			find_field_number(custom_field_key, &field_no);
 			get_field_info(field_no, NULL, &custom_field_name, NULL);
