@@ -1945,8 +1945,6 @@ allcsv_export_database(FILE *out, struct db_enumerator e)
 	  the CSV_LAST sentinel value each time one is found.
 	  CUSTOM_FIELD_START_INDEX is added to these index values so csv_export_common()
 	  can later recognize them and call db_fget_byid() instead of the traditional db_fget()
-
-	  It only search for defined the [legacy?] "custom" fields.
 	*/
 
 	// pointer to the end of the field list
