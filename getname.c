@@ -1,8 +1,9 @@
 
 /*
- * This code was taken from hypermail http://www.hypermail.org/
+ * This code was taken from hypermail
+ * (https://github.com/hypermail-project/hypermail/)
  *
- * license: GNU GENERAL PUBLIC LICENSE, Version 2
+ * license: GNU GENERAL PUBLIC LICENSE
  *
  * modified by Jaakko Heinonen <jheinonen@users.sourceforge.net>
  */
