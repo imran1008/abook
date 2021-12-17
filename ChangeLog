@@ -1,4 +1,5 @@
 git
+ - upgrade the license to GPLv3
  - custom fields' can be used in placeholder in the "custom" output export (Raphaël Droz)
  - allcsv export format can now export any custom fields (of any name) (Raphaël Droz)
  - German translation update (Rieger Anton)
