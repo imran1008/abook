@@ -51,6 +51,37 @@ view PHONE = phone, workphone, pager, mobile, fax
 view OTHER = url, birthday
 
 
+#  Remapping a key
+# -----------------
+#
+# remap <replacement> = <original>
+#
+# with <replacement> being the new key that will execute the command that
+# abook would normally execute if <original> was hit.
+#
+# Example of remap (for colemak-dhm):
+remap f = e
+remap p = r
+remap b = t
+remap j = y
+remap l = u
+remap u = i
+remap y = o
+remap ; = p
+remap r = s
+remap s = d
+remap t = f
+remap m = h
+remap n = j
+remap e = k
+remap i = l
+remap o = ;
+remap d = v
+remap v = b
+remap k = n
+remap h = m
+
+
 
 ##
 ##  Variables

@@ -22,6 +22,7 @@
 #include "views.h"
 #include "xmalloc.h"
 #include "color.h"
+#include "remap.h"
 #ifdef HAVE_CONFIG_H
 #	include "config.h"
 #endif
@@ -722,6 +723,10 @@ edit_loop(int item)
 			return item;
 		}
 	}
+
+	const char *remap_table = get_remap_table();
+	if (c > 0 && c <= 127)
+		c = remap_table[c];
 
 	/* No uppercase nor numeric key should be used in this menu,
 	 * as they are reserved for field selection */

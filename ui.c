@@ -26,6 +26,7 @@
 #include "filter.h"
 #include "xmalloc.h"
 #include "color.h"
+#include "remap.h"
 #include <sys/time.h>
 #ifdef HAVE_CONFIG_H
 #	include "config.h"
@@ -284,6 +285,10 @@ headerline(const char *str)
 void
 refresh_screen()
 {
+	const char *remap_table;
+	char *helpline;
+	int i, size;
+
 #ifdef SIGWINCH
 	if(should_resize) {
 		resize_abook();
@@ -293,7 +298,18 @@ refresh_screen()
 	clear();
 
 	refresh_statusline();
-	headerline(gettext(MAIN_HELPLINE));
+
+	remap_table = get_remap_table();
+	helpline = strdup(gettext(MAIN_HELPLINE));
+	size = strlen(helpline);
+
+	for (i=1; i<size; ++i)
+		if (helpline[i] == ':')
+			helpline[i-1] = remap_table[helpline[i-1]];
+
+	headerline(helpline);
+	free(helpline);
+
 	list_headerline();
 
 	refresh_list();
@@ -530,7 +546,10 @@ extern char *selected;
 void
 get_commands()
 {
+	const char *remap_table;
 	int ch;
+
+	remap_table = get_remap_table();
 
 	for(;;) {
 		can_resize = TRUE; /* it's safe to resize now */
@@ -564,6 +583,10 @@ get_commands()
 				}
 			}
 		}
+
+		if (ch > 0 && ch <= 127)
+			ch = remap_table[ch];
+
 		switch(ch) {
 			case 'q': return;
 			case 'Q': quit_abook(QUIT_DONTSAVE);	break;

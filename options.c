@@ -465,6 +465,24 @@ opt_parse_field(buffer *b)
 	return NULL;
 }
 
+#include "remap.h" /* needed for add_key_remap */
+
+/*
+ * syntax: remap <replacement> = <original>
+ */
+static const char *
+opt_parse_mapping(buffer *b)
+{
+	char *err, *replacement;
+
+	if((err = get_token(b, TOKEN_EQUAL)))
+		return err;
+
+	if((replacement = b->data) == NULL)
+		return _("no replacement provided");
+
+	return add_key_remap(replacement, b->ptr);
+}
 
 static struct {
 	char *token;
@@ -474,6 +492,7 @@ static struct {
 	{ "customfield", opt_parse_customfield }, /* obsolete */
 	{ "view", opt_parse_view },
 	{ "field", opt_parse_field },
+	{ "remap", opt_parse_mapping },
 	{ NULL }
 };
 

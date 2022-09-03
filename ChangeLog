@@ -11,6 +11,7 @@ git
  - custom output filter fixes
  - Aliased --datafile to -f (Gerfried Fuchs)
  - autotools update (Raphaël Droz)
+ - key remapping support (Imran Haider)
 
 0.6.1
  - custom output format (Raphaël Droz)

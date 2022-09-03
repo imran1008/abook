@@ -35,6 +35,7 @@
 #include "getopt.h"
 #include "views.h"
 #include "xmalloc.h"
+#include "remap.h"
 
 static void             init_abook();
 static void		quit_abook_sig(int i);
@@ -128,6 +129,7 @@ init_abook()
 {
 	set_filenames();
 	check_abook_directory();
+	init_remap_table();
 	init_opts();
 	if(load_opts(rcfile) > 0) {
 		printf(_("Press enter to continue...\n"));
